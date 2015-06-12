@@ -35,9 +35,9 @@ module WizAuthc
         Thread.current[:security_contexts_key]
       end
 
-      def init(env)
+      def init(env, current)
         self.env = env
-        self.current = Core::Account.new(self.session)
+        self.current = current
       end
 
 

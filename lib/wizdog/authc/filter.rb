@@ -7,7 +7,7 @@ module WizAuthc
       base.class_eval do
         attr_accessor :current
         include InstanceMethods
-        before_filter :activate_wiz_auth
+        #before_filter :activate_wiz_auth
 
       end
     end
@@ -23,12 +23,12 @@ module WizAuthc
         WizAuthc::SecurityContext.current.authenticated?
       end
 
-      private
-      def activate_wiz_auth
-        p self.session.to_s
-        WizAuthc::SecurityContext.init(self)
-        @current = WizAuthc::SecurityContext.current
-      end
+      # private
+      # def activate_wiz_auth
+      #   p self.session.to_s
+      #   WizAuthc::SecurityContext.init(self, Util::Account.new(self.session))
+      #   @current = WizAuthc::SecurityContext.current
+      # end
     end
   end
 end
