@@ -26,7 +26,7 @@ module WizAuthc
       # private
       # def activate_wiz_auth
       #   p self.session.to_s
-      #   WizAuthc::SecurityContext.init(self, Util::Account.new(self.session))
+      #   WizAuthc::SecurityContext.init(self, Util::Account)
       #   @current = WizAuthc::SecurityContext.current
       # end
     end
