@@ -30,15 +30,17 @@ module WizAuthc
       #      def get_realm_map
       #        @@realm_map
       #      end
-      #overide
-      def find_one_by_principal(principal)
+      #
+      def find_by_principal(principal)
         where(:login => principal).first
       end
 
       def authenticate(principal=nil, credential=nil, remembered = false)
-        user = find_one_by_principal(principal)
-        p user
-        p principal
+        if respond_to?(:find_one_by_principal)
+          user = find_one_by_principal(principal)
+        else
+          user = find_by_principal(principal)
+        end
         user && user.authenticate(credential) ? user : nil
       end
 
